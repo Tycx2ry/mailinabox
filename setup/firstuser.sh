@@ -33,9 +33,10 @@ if [ -z "`tools/mail.py user`" ]; then
 		# But in a non-interactive shell, just make something up.
 		# This is normally for testing.
 		else
-			# Use me@PRIMARY_HOSTNAME
-			EMAIL_ADDR=me@$PRIMARY_HOSTNAME
-			EMAIL_PW=12345678
+			# Use me@DEFAULT_DOMAIN_GUESS
+            DEFAULT_DOMAIN_GUESS=$(echo $(get_default_hostname) | sed -e 's/^box\.//')
+			EMAIL_ADDR=me@$DEFAULT_DOMAIN_GUESS
+			EMAIL_PW=360ateam
 			echo
 			echo "Creating a new administrative mail account for $EMAIL_ADDR with password $EMAIL_PW."
 			echo
